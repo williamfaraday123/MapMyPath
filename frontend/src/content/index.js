@@ -1,0 +1,76 @@
+export const townCoordinates = {
+    "Ang Mo Kio": { lat: 1.3691, lng: 103.8454 },
+    "Bedok": { lat: 1.3243, lng: 103.9271 },
+    "Bishan": { lat: 1.3521, lng: 103.8491 },
+    "Bukit Batok": { lat: 1.3496, lng: 103.7545 },
+    "Bukit Merah": { lat: 1.2773, lng: 103.8198 },
+    "Bukit Panjang": { lat: 1.3817, lng: 103.7625 },
+    "Choa Chu Kang": { lat: 1.3853, lng: 103.7443 },
+    "Clementi": { lat: 1.3151, lng: 103.7657 },
+    "Geylang": { lat: 1.3189, lng: 103.8920 },
+    "Hougang": { lat: 1.3711, lng: 103.8923 },
+    "Jurong East": { lat: 1.3335, lng: 103.7414 },
+    "Jurong West": { lat: 1.3404, lng: 103.7050 },
+    "Kallang": { lat: 1.3083, lng: 103.8664 },
+    "Marine Parade": { lat: 1.3015, lng: 103.8992 },
+    "Pasir Ris": { lat: 1.3732, lng: 103.9496 },
+    "Punggol": { lat: 1.4039, lng: 103.9090 },
+    "Queenstown": { lat: 1.2940, lng: 103.8036 },
+    "Sembawang": { lat: 1.4492, lng: 103.8184 },
+    "Sengkang": { lat: 1.3917, lng: 103.8952 },
+    "Serangoon": { lat: 1.3535, lng: 103.8692 },
+    "Tampines": { lat: 1.3451, lng: 103.9444 },
+    "Toa Payoh": { lat: 1.3347, lng: 103.8570 },
+    "Woodlands": { lat: 1.4375, lng: 103.7865 },
+    "Yishun": { lat: 1.4294, lng: 103.8363 },
+};
+
+export const townRadius = {
+    "Ang Mo Kio": 1500,
+    "Bedok": 2000,
+    "Bishan": 1800,
+    "Bukit Batok": 1200,
+    "Bukit Merah": 2000,
+    "Bukit Panjang": 1500,
+    "Choa Chu Kang": 2000,
+    "Clementi": 1200,
+    "Geylang": 2000,
+    "Hougang": 1800,
+    "Jurong East": 2000,
+    "Jurong West": 2000,
+    "Kallang": 1600,
+    "Marine Parade": 2000,
+    "Pasir Ris": 1800,
+    "Punggol": 1500,
+    "Queenstown": 1600,
+    "Sembawang": 1800,
+    "Sengkang": 2000,
+    "Serangoon": 1600,
+    "Tampines": 2000,
+    "Toa Payoh": 1400,
+    "Woodlands": 2000,
+    "Yishun": 1500,
+};
+
+export const places = {
+    "Select Place Type": "",
+    "Restaurant": "restaurant",
+    "Park": "park",
+    "Museum": "museum",
+    "Shopping Mall": "shopping_mall",
+};
+
+export const prices = {
+    "Select Price Range": 4,
+    "Cheap": 1,
+    "Moderate": 2,
+    "Expensive": 3,
+};
+
+export const ratings = {
+    "Select Min Rating": 0,
+    "1 Star": 1,
+    "2 Stars": 2,
+    "3 Stars": 3,
+    "4 Stars": 4,
+};
