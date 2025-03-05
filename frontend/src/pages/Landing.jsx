@@ -61,7 +61,7 @@ const Landing = () => {
             const brightness = getBackgroundBrightness(dominantColor);
 
             // Set text color based on brightness threshold
-            setTextColor(brightness > 0.5 ? "black" : "white");
+            setTextColor(brightness > 0.67 ? "black" : "white");
         };
     }, []);
 

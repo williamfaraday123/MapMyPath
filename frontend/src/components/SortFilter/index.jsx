@@ -1,5 +1,6 @@
+import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import { places, prices, ratings, townCoordinates } from "../../content";
 import { usePlacesContext } from "../../context/PlacesContext";
@@ -9,8 +10,8 @@ const SortFilter = () => {
     const [formData, setFormData] = useState({
         town: '',
         placeType: '',
-        maxPrice: 4,
-        minRating: 0
+        maxPrice: '',
+        minRating: ''
     });
 
     const { setPlaces } = usePlacesContext();
@@ -37,43 +38,103 @@ const SortFilter = () => {
     };
 
     return (
-        <div>
+        <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+            color: 'inherit', // Inherit the color from the parent box
+            '& .MuiOutlinedInput-root': {
+                color: 'inherit', // Applies the same color to the text
+                '& fieldset': {
+                    borderColor: 'currentColor', // Matches outline color to the text color
+                },
+                '&:hover fieldset': {
+                    borderColor: 'currentColor', // Ensure hover keeps the same color
+                },
+                '&.Mui-focused fieldset': {
+                    borderColor: 'currentColor', // Outline remains consistent on focus
+                },
+            },
+        }}>
             <h2>Search Places</h2>
-            <div>
-                <Form.Label>Town</Form.Label>
-                <Form.Select value={formData.town} onChange={(e) => handleChange(e, "town")}>
-                    <option value="">Select Town</option>
+            <FormControl fullWidth>
+                <InputLabel
+                    sx={{
+                        color: 'inherit', // Inherits the parent's color
+                        '&.Mui-focused': {
+                            color: 'inherit', // Ensures it stays consistent when focused
+                        },
+                    }}
+                >Town</InputLabel>
+                <Select
+                    value={formData.town}
+                    label="Town"
+                    onChange={(e) => handleChange(e, "town")}
+                >
                     {Object.keys(townCoordinates).map((town) => (
-                        <option key={town} value={town}>{town}</option>
+                        <MenuItem key={town} value={town}>{town}</MenuItem>
                     ))}
-                </Form.Select>
-            </div>
-            <div>
-                <Form.Label>Place</Form.Label>
-                <Form.Select value={formData.placeType} onChange={(e) => handleChange(e, "placeType")}>
+                </Select>
+            </FormControl>
+            <FormControl>
+                <InputLabel
+                    sx={{
+                        color: 'inherit', // Inherits the parent's color
+                        '&.Mui-focused': {
+                            color: 'inherit', // Ensures it stays consistent when focused
+                        },
+                    }}
+                >Place</InputLabel>
+                <Select
+                    value={formData.placeType}
+                    label="Place"
+                    onChange={(e) => handleChange(e, "placeType")}
+                >
                     {Object.keys(places).map((place) => (
-                        <option key={place} value={places[place]}>{place}</option>
+                        <MenuItem key={place} value={places[place]}>{place}</MenuItem>
                     ))}
-                </Form.Select>
-            </div>
-            <div>
-                <Form.Label>Max Price</Form.Label>
-                <Form.Select value={formData.maxPrice} onChange={(e) => handleChange(e, "maxPrice")}>
+                </Select>
+            </FormControl>
+            <FormControl>
+                <InputLabel
+                    sx={{
+                        color: 'inherit', // Inherits the parent's color
+                        '&.Mui-focused': {
+                            color: 'inherit', // Ensures it stays consistent when focused
+                        },
+                    }}
+                >Max Price</InputLabel>
+                <Select
+                    value={formData.maxPrice}
+                    label="Max Price"
+                    onChange={(e) => handleChange(e, "maxPrice")}
+                >
                     {Object.keys(prices).map((price) => (
-                        <option key={price} value={prices[price]}>{price}</option>
+                        <MenuItem key={price} value={prices[price]}>{price}</MenuItem>
                     ))}
-                </Form.Select>
-            </div>
-            <div>
-                <Form.Label>Min Rating</Form.Label>
-                <Form.Select value={formData.minRating} onChange={(e) => handleChange(e, "minRating")}>
+                </Select>
+            </FormControl>
+            <FormControl>
+                <InputLabel
+                    sx={{
+                        color: 'inherit', // Inherits the parent's color
+                        '&.Mui-focused': {
+                            color: 'inherit', // Ensures it stays consistent when focused
+                        },
+                    }}
+                >Min Rating</InputLabel>
+                <Select
+                    value={formData.minRating}
+                    label="Min Rating"
+                    onChange={(e) => handleChange(e, "minRating")}
+                >
                     {Object.keys(ratings).map((rating) => (
-                        <option key={rating} value={ratings[rating]}>{rating}</option>
+                        <MenuItem key={rating} value={ratings[rating]}>{rating}</MenuItem>
                     ))}
-                </Form.Select>
-            </div>
-            <Button onClick={onSearch} style={{ marginTop: "2vh" }}>Search</Button>
-        </div>
+                </Select>
+            </FormControl>
+            <Button onClick={onSearch} style={{ alignSelf: 'stretch' }}>Search</Button>
+        </Box>
     );
 };
 

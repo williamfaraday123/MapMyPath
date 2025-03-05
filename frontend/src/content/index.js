@@ -61,14 +61,14 @@ export const places = {
 };
 
 export const prices = {
-    "Select Price Range": 4,
+    "Select Maximum Price": 4,
     "Cheap": 1,
     "Moderate": 2,
     "Expensive": 3,
 };
 
 export const ratings = {
-    "Select Min Rating": 0,
+    "Select Minimum Rating": 0,
     "1 Star": 1,
     "2 Stars": 2,
     "3 Stars": 3,

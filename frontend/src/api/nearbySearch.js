@@ -32,7 +32,7 @@ const nearbySearch = async (lat, lng, radius, placeType, maxPrice) => {
           price: result?.price_level,
           lat: result?.geometry?.location?.lat,
           lng: result?.geometry?.location?.lng,
-          image: result?.photos[0]?.photo_reference
+          image: result?.photos && result.photos[0]?.photo_reference ? result.photos[0].photo_reference : null
         }));
         return places;
     } catch (error) {

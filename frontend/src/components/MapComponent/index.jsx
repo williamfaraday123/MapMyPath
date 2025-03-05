@@ -47,13 +47,13 @@ const MapComponent = () => {
                         <p>{place?.name}</p>
                         <ButtonGroup>
                             <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'cycling-regular')}>
-                                Find Cycling Path
+                                Cycle
                             </Button>
                             <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'driving-car')}>
-                                Find Driving Path
+                                Drive
                             </Button>
                             <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'foot-walking')}>
-                                Find Walking Path
+                                Walk
                             </Button>
                         </ButtonGroup>
                     </Popup>
