@@ -29,12 +29,21 @@ const ListComponent = () => {
                         <Card
                             style={{ width: '18rem' }}
                         >
-                            {/* <ImageComponent place_id={place?.id}/> */}
+                            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${place?.image}&key=${import.meta.env.VITE_GOOGLE_API_KEY}`} alt="image cannot be displayed"></img>
                             <Card.Body>
                                 <Card.Title>{place?.name}</Card.Title>
-                                <Card.Text>Address: {place?.address}</Card.Text>
-                                <Card.Text>Rating: {place?.rating}</Card.Text>
-                                <Card.Text>Price: {place?.price}</Card.Text>
+                                <Card.Text>{"⭐".repeat(place?.rating)}</Card.Text>
+                                <Card.Text style={{ display: "flex", justifyContent: "space-between" }}>
+                                    <span>Price</span>
+                                    <span>{"$".repeat(place?.price)}</span>
+                                </Card.Text>
+                                <Card.Text style={{ display: "flex", justifyContent: "space-between" }}>
+                                    <img 
+                                        src={`https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png`}
+                                        style={{ height: "1.3em", width: "auto" }}
+                                    ></img>
+                                    <span>{place?.address}</span>
+                                </Card.Text>
                             </Card.Body>
                         </Card>
                     </ListGroup.Item>
