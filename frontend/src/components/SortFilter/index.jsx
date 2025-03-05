@@ -72,7 +72,7 @@ const SortFilter = () => {
                     ))}
                 </Form.Select>
             </div>
-            <Button onClick={onSearch}>Search</Button>
+            <Button onClick={onSearch} style={{ marginTop: "2vh" }}>Search</Button>
         </div>
     );
 };
