@@ -4,6 +4,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { MapContainer, Marker, Polyline, Popup, TileLayer } from 'react-leaflet';
 import { usePlacesContext } from "../../context/PlacesContext";
 import findPath from '../../services/findPath';
+import blueIcon from './blueIcon';
 
 const MapComponent = () => {
     const { places, placeClicked, setPlaceClicked } = usePlacesContext();
@@ -20,7 +21,7 @@ const MapComponent = () => {
     }, [placeClicked]);
 
     return (
-        <MapContainer center={singaporeCentre} zoom={11} style={{ height: '450px', width: '450px' }}>
+        <MapContainer center={singaporeCentre} zoom={11} style={{ width: '100%' }}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -35,6 +36,7 @@ const MapComponent = () => {
                             setPlaceClicked(index);
                         },
                     }}
+                    icon={blueIcon}
                 >
                     <Popup>
                         <p>{place?.name}</p>
