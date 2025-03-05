@@ -1,23 +1,27 @@
-/* import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Alert, Col, Container, Row } from "react-bootstrap";
 import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
 
 const SearchResults = () => {
-    const [isPortrait, setIsPortrait] = useState(window.innerWidth < 768 || window.innerHeight > window.innerWidth);
+    const [isPortrait, setIsPortrait] = useState(window.screen.orientation.type.includes("portrait") || window.innerHeight > window.innerWidth);
     const [showAlert, setShowAlert] = useState(isPortrait);
 
     useEffect(() => {
         const handleResize = () => {
-            const portrait = (window.innerWidth < 768 || window.innerHeight > window.innerWidth);
+            const portrait = (window.screen.orientation.type.includes("portrait") || window.innerHeight > window.innerWidth);
             setIsPortrait(portrait);
             if (portrait)
                 setShowAlert(portrait);
         };
 
         window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        window.screen.orientation.addEventListener("change", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            window.screen.orientation.removeEventListener("change", handleOrientationChange);
+        }
     }, []);
     return (
         <Container fluid>
@@ -55,9 +59,9 @@ const SearchResults = () => {
     );
 };
 
-export default SearchResults; */
+export default SearchResults;
 
-
+/*
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Alert, Col, Container, Row } from "react-bootstrap";
@@ -117,3 +121,4 @@ const SearchResults = () => {
 };
 
 export default SearchResults;
+*/
