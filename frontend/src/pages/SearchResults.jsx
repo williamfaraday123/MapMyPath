@@ -5,15 +5,13 @@ import MapComponent from "../components/MapComponent";
 
 const SearchResults = () => {
     return (
-        <Container fluid style={{ height: "100vh", width: "100vw"}}>
-            <Row>
-                <Col md={4} style={{ overflowY: "auto", height: "100vh" }}>
+        <Container fluid>
+            <Row className="g-0">
+                <Col xs={12} md={4} style={{ overflowY: "auto", minHeight: "50vh" }}>
                     <ListComponent />
                 </Col>
-                <Col md={8} style={{ height: "100vh", display: "flex" }}>
-                    <div style={{ flex: 1 }}>
-                        <MapComponent />
-                    </div>
+                <Col xs={12} md={8} style={{ minHeight: "50vh" }}>
+                    <MapComponent />
                 </Col>
             </Row>
         </Container>
