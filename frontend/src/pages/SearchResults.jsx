@@ -1,37 +1,36 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
-import { Alert, Col, Container, Row } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Col, Container, Row, Alert, Button } from "react-bootstrap";
 import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
 
 const SearchResults = () => {
-    const [isPortrait, setIsPortrait] = useState(window.screen.orientation.type.includes("portrait") || window.innerHeight > window.innerWidth);
-    const [showAlert, setShowAlert] = useState(isPortrait);
+    const [isPortrait, setIsPortrait] = useState(window.innerWidth < 768 || window.innerHeight > window.innerWidth);
+    const [showAlert, setShowAlert] = useState(isPortrait); // Show alert only in portrait
 
     useEffect(() => {
         const handleResize = () => {
-            const portrait = (window.screen.orientation.type.includes("portrait") || window.innerHeight > window.innerWidth);
+            const portrait = window.innerWidth < 768 || window.innerHeight > window.innerWidth;
             setIsPortrait(portrait);
-            if (portrait)
-                setShowAlert(portrait);
+            if (portrait) {
+                setShowAlert(true); // Show alert again if resizing back to portrait
+            }
         };
 
         window.addEventListener("resize", handleResize);
-        window.screen.orientation.addEventListener("change", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            window.screen.orientation.removeEventListener("change", handleOrientationChange);
-        }
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
+
     return (
         <Container fluid>
             {showAlert && isPortrait && (
                 <Alert variant="warning" dismissible onClose={() => setShowAlert(false)} className="text-center">
-                    The browser works better in landscape. Please tilt your screen.
+                    Use Desktop full screen for best experience
                 </Alert>
             )}
+
             {isPortrait ? (
-                //mobile portrait
+                // Mobile Portrait (Stacked Layout with independent scrolling)
                 <>
                     <Row className="vh-50">
                         <Col xs={12} className="overflow-auto" style={{ maxHeight: "50vh" }}>
@@ -39,15 +38,15 @@ const SearchResults = () => {
                         </Col>
                     </Row>
                     <Row className="vh-50">
-                        <Col xs={12} className="d-flex" style={{ paddingTop: "1rem" }}>
+                        <Col xs={12} className="d-flex">
                             <MapComponent />
                         </Col>
                     </Row>
                 </>
             ) : (
-                //Mobile Landscape or Desktop
-                <Row className="g-0">
-                    <Col xs={12} md={4} className="vh-100 overflow-auto">
+                // Landscape & Desktop (Side-by-side)
+                <Row className="g-0 vh-100">
+                    <Col xs={12} md={4} className="overflow-auto" style={{ maxHeight: "100vh" }}>
                         <ListComponent />
                     </Col>
                     <Col xs={12} md={8} className="vh-100">
@@ -60,65 +59,3 @@ const SearchResults = () => {
 };
 
 export default SearchResults;
-
-/*
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
-import { Alert, Col, Container, Row } from "react-bootstrap";
-import ListComponent from "../components/ListComponent";
-import MapComponent from "../components/MapComponent";
-
-const SearchResults = () => {
-    const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
-    const [showAlert, setShowAlert] = useState(isPortrait);
-
-    useEffect(() => {
-        const handleResize = () => {
-            const portrait = window.innerHeight > window.innerWidth;
-            setIsPortrait(portrait);
-            if (portrait)
-                setShowAlert(portrait);
-        };
-
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    return (
-        <Container fluid className="vh-100 p-0">
-            {showAlert && isPortrait && (
-                <Alert variant="warning" dismissible onClose={() => setShowAlert(false)} className="text-center m-0">
-                    The browser works better in landscape. Please tilt your screen.
-                </Alert>
-            )}
-            {isPortrait ? (
-                // Mobile Portrait
-                <>
-                    <Row className="vh-50 m-0">
-                        <Col xs={12} className="overflow-auto p-0" style={{ maxHeight: "50vh" }}>
-                            <ListComponent />
-                        </Col>
-                    </Row>
-                    <Row className="vh-50 m-0">
-                        <Col xs={12} className="p-0">
-                            <MapComponent />
-                        </Col>
-                    </Row>
-                </>
-            ) : (
-                // Mobile Landscape or Desktop
-                <Row className="g-0 m-0">
-                    <Col xs={12} md={4} className="vh-100 overflow-auto p-0">
-                        <ListComponent />
-                    </Col>
-                    <Col xs={12} md={8} className="vh-100 p-0">
-                        <MapComponent />
-                    </Col>
-                </Row>
-            )}
-        </Container>
-    );
-};
-
-export default SearchResults;
-*/
