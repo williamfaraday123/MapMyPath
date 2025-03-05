@@ -3,14 +3,18 @@ import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
 const SearchResults = () => {
     return (
-        <Container>
-            <Row>
+        <Container fluid style={{ height: "100vh" }}>
+            <Row style={{ height: "100%" }}>
                 <Col style={{
-                    overflowY: "auto"
+                    overflowY: "auto",
+                    height: "100%"
                 }}>
                     <ListComponent />
                 </Col>
-                <Col>
+                <Col style={{
+                        height: "100%",
+                        padding: 0,
+                }}>
                     <MapComponent />
                 </Col>
             </Row>
