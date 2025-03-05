@@ -1,6 +1,6 @@
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
 import { MapContainer, Marker, Polyline, Popup, TileLayer } from 'react-leaflet';
 import { usePlacesContext } from "../../context/PlacesContext";
 import findPath from '../../services/findPath';
@@ -38,15 +38,17 @@ const MapComponent = () => {
                 >
                     <Popup>
                         <p>{place?.name}</p>
-                        <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'cycling-regular')}>
-                            Find Cycling Path
-                        </Button>
-                        <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'driving-car')}>
-                            Find Driving Path
-                        </Button>
-                        <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'foot-walking')}>
-                            Find Walking Path
-                        </Button>
+                        <ButtonGroup>
+                            <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'cycling-regular')}>
+                                Find Cycling Path
+                            </Button>
+                            <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'driving-car')}>
+                                Find Driving Path
+                            </Button>
+                            <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'foot-walking')}>
+                                Find Walking Path
+                            </Button>
+                        </ButtonGroup>
                     </Popup>
                 </Marker>
             ))}

@@ -1,12 +1,20 @@
+import { Col, Container, Row } from "react-bootstrap/lib/Tab";
 import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
-
 const SearchResults = () => {
     return (
-        <div style={{ display: "flex" }}>
-            <ListComponent />
-            <MapComponent />
-        </div>
+        <Container>
+            <Row>
+                <Col style={{
+                    overflowY: "auto"
+                }}>
+                    <ListComponent />
+                </Col>
+                <Col>
+                    <MapComponent />
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

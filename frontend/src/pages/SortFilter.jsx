@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { places, prices, ratings, townCoordinates } from "../content";
 import { usePlacesContext } from "../context/PlacesContext";
@@ -40,37 +40,37 @@ const SortFilter = () => {
         <div>
             <h2>Search Places</h2>
             <div>
-                <label>Town</label>
-                <select value={formData.town} onChange={(e) => handleChange(e, "town")}>
+                <Form.Label>Town</Form.Label>
+                <Form.Select value={formData.town} onChange={(e) => handleChange(e, "town")}>
                     <option value="">Select Town</option>
                     {Object.keys(townCoordinates).map((town) => (
                         <option key={town} value={town}>{town}</option>
                     ))}
-                </select>
+                </Form.Select>
             </div>
             <div>
-                <label>Place</label>
-                <select value={formData.placeType} onChange={(e) => handleChange(e, "placeType")}>
+                <Form.Label>Place</Form.Label>
+                <Form.Select value={formData.placeType} onChange={(e) => handleChange(e, "placeType")}>
                     {Object.keys(places).map((place) => (
                         <option key={place} value={places[place]}>{place}</option>
                     ))}
-                </select>
+                </Form.Select>
             </div>
             <div>
-                <label>Max Price</label>
-                <select value={formData.maxPrice} onChange={(e) => handleChange(e, "maxPrice")}>
+                <Form.Label>Max Price</Form.Label>
+                <Form.Select value={formData.maxPrice} onChange={(e) => handleChange(e, "maxPrice")}>
                     {Object.keys(prices).map((price) => (
                         <option key={price} value={prices[price]}>{price}</option>
                     ))}
-                </select>
+                </Form.Select>
             </div>
             <div>
-                <label>Min Rating</label>
-                <select value={formData.minRating} onChange={(e) => handleChange(e, "minRating")}>
+                <Form.Label>Min Rating</Form.Label>
+                <Form.Select value={formData.minRating} onChange={(e) => handleChange(e, "minRating")}>
                     {Object.keys(ratings).map((rating) => (
                         <option key={rating} value={ratings[rating]}>{rating}</option>
                     ))}
-                </select>
+                </Form.Select>
             </div>
             <Button onClick={onSearch}>Search</Button>
         </div>
