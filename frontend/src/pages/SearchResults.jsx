@@ -1,21 +1,19 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Container, Row } from "react-bootstrap";
 import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
+
 const SearchResults = () => {
     return (
-        <Container fluid style={{ height: "100vh" }}>
-            <Row style={{ height: "100%" }}>
-                <Col style={{
-                    overflowY: "auto",
-                    height: "100%"
-                }}>
+        <Container fluid style={{ height: "100vh", width: "100vw"}}>
+            <Row>
+                <Col md={4} style={{ overflowY: "auto", height: "100vh" }}>
                     <ListComponent />
                 </Col>
-                <Col style={{
-                        height: "100%",
-                        padding: 0,
-                }}>
-                    <MapComponent />
+                <Col md={8} style={{ height: "100vh", display: "flex" }}>
+                    <div style={{ flex: 1 }}>
+                        <MapComponent />
+                    </div>
                 </Col>
             </Row>
         </Container>
