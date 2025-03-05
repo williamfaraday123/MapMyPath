@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap/lib/Tab";
+import { Col, Container, Row } from "react-bootstrap";
 import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
 const SearchResults = () => {
