@@ -27,7 +27,7 @@ const ListComponent = () => {
                         active = {placeClicked === index}
                     >
                         <Card
-                            style={{ width: '18rem' }}
+                            style={{ width: '100%' }}
                         >
                             <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${place?.image}&key=${import.meta.env.VITE_GOOGLE_API_KEY}`} alt="image cannot be displayed"></img>
                             <Card.Body>
