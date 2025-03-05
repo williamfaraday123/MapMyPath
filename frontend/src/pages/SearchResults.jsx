@@ -7,11 +7,13 @@ const SearchResults = () => {
     return (
         <Container fluid>
             <Row className="g-0">
+                {/* ListComponent on the left */}
                 <Col xs={12} md={4} className="overflow-auto vh-100" style={{ maxHeight: "100vh" }}>
                     <ListComponent />
                 </Col>
-                {/* Right: Fixed map (only fixed on larger screens) */}
-                <Col xs={12} md={8} className="vh-100 d-md-block d-none position-fixed end-0">
+
+                {/* MapComponent on the right */}
+                <Col xs={12} md={8} className="vh-100">
                     <MapComponent />
                 </Col>
 
