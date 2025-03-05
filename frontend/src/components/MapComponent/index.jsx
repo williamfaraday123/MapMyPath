@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef, useState } from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
@@ -21,7 +22,11 @@ const MapComponent = () => {
     }, [placeClicked]);
 
     return (
-        <MapContainer center={singaporeCentre} zoom={11} style={{ width: '100%' }}>
+        <MapContainer 
+            center={singaporeCentre} 
+            zoom={11} 
+            style={{ width: '100vw', height: '100vh' }} // Ensures full height
+        >
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
