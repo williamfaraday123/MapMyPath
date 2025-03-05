@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useRef } from "react";
 import { Card, ListGroup } from 'react-bootstrap';
 import { usePlacesContext } from "../../context/PlacesContext";
-import SortFilter from "../../pages/SortFilter";
+import SortFilter from "../SortFilter";
 
 const ListComponent = () => {
     const { places, placeClicked, setPlaceClicked } = usePlacesContext();
