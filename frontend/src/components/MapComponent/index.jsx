@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef, useState } from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { ButtonGroup, Dropdown, DropdownButton } from 'react-bootstrap';
 import { MapContainer, Marker, Polyline, Popup, TileLayer } from 'react-leaflet';
 import { usePlacesContext } from "../../context/PlacesContext";
 import findPath from '../../services/findPath';
@@ -46,15 +46,21 @@ const MapComponent = () => {
                     <Popup>
                         <p>{place?.name}</p>
                         <ButtonGroup>
-                            <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'cycling-regular')}>
-                                Cycle
-                            </Button>
-                            <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'driving-car')}>
-                                Drive
-                            </Button>
-                            <Button onClick={() => findPath([place?.lng, place?.lat], setRoute, 'foot-walking')}>
-                                Walk
-                            </Button>
+                            <DropdownButton title="Cycle">
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'cycling-regular')}>Regular Cycling</Dropdown.Item>
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'cycling-road')}>Road Cycling</Dropdown.Item>
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'cycling-mountain')}>Mountain Bike</Dropdown.Item>
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'cycling-electric')}>Electric Bike</Dropdown.Item>
+                            </DropdownButton>
+                            <DropdownButton title="Drive">
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'driving-car')}>Car</Dropdown.Item>
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'driving-hgv')}>Heavy Goods Vehicle</Dropdown.Item>
+                            </DropdownButton>
+                            <DropdownButton title="Walk">
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'foot-walking')}>Pavement</Dropdown.Item>
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'foot-hiking')}>Hiking</Dropdown.Item>
+                                <Dropdown.Item onClick={() => findPath([place?.lng, place?.lat], setRoute, 'wheelchair')}>wheelchair</Dropdown.Item>
+                            </DropdownButton>
                         </ButtonGroup>
                     </Popup>
                 </Marker>
