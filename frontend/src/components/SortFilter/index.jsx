@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { places, prices, ratings, townCoordinates } from "../content";
-import { usePlacesContext } from "../context/PlacesContext";
-import getPlaces from "../services/getPlaces";
+import { places, prices, ratings, townCoordinates } from "../../content";
+import { usePlacesContext } from "../../context/PlacesContext";
+import getPlaces from "../../services/getPlaces";
 
 const SortFilter = () => {
     const [formData, setFormData] = useState({

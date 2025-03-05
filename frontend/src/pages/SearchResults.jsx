@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState, useEffect } from "react";
-import { Col, Container, Row, Alert, Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import ListComponent from "../components/ListComponent";
 import MapComponent from "../components/MapComponent";
 
